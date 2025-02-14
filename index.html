@@ -16,12 +16,15 @@
       background: linear-gradient(135deg, #ff9a9e, #fad0c4); /* Fondo degradado */
       font-family: 'Arial', sans-serif;
       overflow: hidden;
+      box-sizing: border-box;
     }
 
     /* Estilos para la tarjeta */
     .card {
-      width: 500px;
-      height: 600px;
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      max-height: 600px;
       position: relative;
       transform-style: preserve-3d;
       transition: transform 1s;
@@ -136,6 +139,41 @@
     }
     @keyframes fall {
       to { transform: translateY(100vh); }
+    }
+
+    /* Media Queries para adaptabilidad */
+    @media (max-width: 768px) {
+      .card .front, .card .back {
+        font-size: 18px;
+      }
+      #love-letter {
+        font-size: 20px;
+        padding: 15px;
+        margin: 15px;
+      }
+      #love-image {
+        max-width: 90%;
+      }
+      .flower {
+        font-size: 120px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card .front, .card .back {
+        font-size: 16px;
+      }
+      #love-letter {
+        font-size: 18px;
+        padding: 10px;
+        margin: 10px;
+      }
+      #love-image {
+        max-width: 95%;
+      }
+      .flower {
+        font-size: 100px;
+      }
     }
   </style>
 </head>
