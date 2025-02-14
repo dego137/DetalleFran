@@ -59,7 +59,7 @@
     .card .front {
       animation: pulse 2s infinite;
       font-family: 'Georgia', serif; /* Usamos una tipografía más elegante */
-      font-size: 25px; /* Tamaño de fuente más grande para mayor elegancia */
+      font-size: 22px; /* Tamaño de fuente más grande para mayor elegancia */
       color: #f8f0e3; /* Color suave, un tono marfil claro */
     }
     @keyframes pulse {
@@ -146,7 +146,7 @@
     <div class="back">
       <h1>Feliz Día del Amor, para mi amor</h1>
       <div id="love-letter"></div>
-      <img id="love-image" src="pareja.jpeg" alt="Imagen de amor">
+      <img id="love-image" src="pareja.jpeg" alt="Imagen de amor"> <!-- Reemplaza con tu imagen -->
     </div>
   </div>
 
@@ -170,6 +170,7 @@
       document.getElementById('flower').style.display = 'block'; // Mostrar la flor
       typeWriter();
       playMusic();
+
       // Mostrar la imagen después de 23 segundos
       setTimeout(() => {
         document.getElementById('love-letter').style.display = 'none'; // Ocultar el texto
