@@ -18,9 +18,20 @@
       overflow: hidden;
     }
 
+    /* Contenedor principal */
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
     /* Estilos para la tarjeta */
     .card {
-      width: 500px;
+      width: 90%;
+      max-width: 500px;
       height: 600px;
       position: relative;
       transform-style: preserve-3d;
@@ -29,7 +40,6 @@
       perspective: 1000px;
     }
     .card .front, .card .back {
-      position: absolute;
       width: 100%;
       height: 100%;
       backface-visibility: hidden;
@@ -41,6 +51,9 @@
       border-radius: 10px;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
       transition: transform 0.5s, box-shadow 0.3s;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
     .card .front {
       background: #ff6f61;
@@ -49,7 +62,7 @@
     .card .back {
       background: #ff4757;
       transform: rotateY(180deg);
-      flex-direction: column; /* Alinear contenido en columna */
+      flex-direction: column;
     }
     .card.open {
       transform: rotateY(180deg);
@@ -58,9 +71,9 @@
     /* Efecto interactivo para el texto "Haz clic aquí" */
     .card .front {
       animation: pulse 2s infinite;
-      font-family: 'Georgia', serif; /* Usamos una tipografía más elegante */
-      font-size: 22px; /* Tamaño de fuente más grande para mayor elegancia */
-      color: #f8f0e3; /* Color suave, un tono marfil claro */
+      font-family: 'Georgia', serif;
+      font-size: 22px;
+      color: #f8f0e3;
     }
     @keyframes pulse {
       0% { transform: scale(1); }
@@ -73,48 +86,46 @@
       font-family: 'Georgia', serif;
       font-size: 28px;
       color: #fff;
-      margin-top: 20px; /* Espacio superior */
+      margin-top: 20px;
       text-align: center;
     }
 
     /* Estilos para la carta de amor */
     #love-letter {
-      font-family: 'Georgia', serif; /* Usamos una tipografía más elegante */
-      font-size: 25px; /* Tamaño de fuente más grande para mayor elegancia */
-      color: #4b4b4b; /* Gris oscuro para mayor visibilidad */
-      background-color: #f1c6d2; /* Fondo rosa pálido para un toque romántico */
+      font-family: 'Georgia', serif;
+      font-size: 25px;
+      color: #4b4b4b;
+      background-color: #f1c6d2;
       white-space: pre-wrap;
       text-align: center;
-      margin: 20px; /* Márgenes para centrado y espacio alrededor */
-      padding: 20px; /* Espaciado interno */
-      border-radius: 15px; /* Bordes redondeados para un toque más suave */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para dar profundidad */
-      display: none; /* Oculto inicialmente */
-      line-height: 1.6; /* Mayor espacio entre líneas para facilitar la lectura */
+      margin: 20px;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: none;
+      line-height: 1.6;
     }
 
     /* Estilos para la imagen */
     #love-image {
-      display: none; /* Oculto inicialmente */
-      max-width: 80%; /* Ajusta el tamaño de la imagen */
-      border-radius: 15px; /* Bordes redondeados */
-      margin: 20px auto; /* Centrar la imagen */
+      display: none;
+      max-width: 80%;
+      border-radius: 15px;
+      margin: 20px auto;
     }
 
     /* Estilos para la flor */
     .flower {
-      position: absolute;
-      bottom: 30px; /* Ajustamos la posición de la flor */
-      left: 50%;
-      transform: translateX(-50%);
       font-size: 150px;
-      color: #ff69b4; /* Color rosa */
+      color: #ff69b4;
       animation: grow 2.5s ease-out forwards;
-      display: none; /* Oculto inicialmente */
+      display: none;
+      text-align: center;
+      margin-top: 20px;
     }
     @keyframes grow {
-      0% { transform: translateX(-50%) scale(0); }
-      100% { transform: translateX(-50%) scale(1); }
+      0% { transform: scale(0); }
+      100% { transform: scale(1); }
     }
 
     /* Estilos para la lluvia de corazones */
@@ -140,18 +151,19 @@
   </style>
 </head>
 <body>
-  <!-- Tarjeta -->
-  <div class="card" onclick="openCard()">
-    <div class="front">Para: Francis, mi persona favorita</div>
-    <div class="back">
-      <h1>Feliz Día del Amor, para mi amor</h1>
-      <div id="love-letter"></div>
-      <img id="love-image" src="pareja.jpeg" alt="Imagen de amor"> <!-- Reemplaza con tu imagen -->
+  <!-- Contenedor principal -->
+  <div class="container">
+    <!-- Tarjeta -->
+    <div class="card" onclick="openCard()">
+      <div class="front">Para: Francis, mi persona favorita</div>
+      <div class="back">
+        <h1>Feliz Día del Amor, para mi amor</h1>
+        <div id="love-letter"></div>
+        <img id="love-image" src="pareja.jpeg" alt="Imagen de amor"> <!-- Reemplaza con tu imagen -->
+      </div>
     </div>
   </div>
 
-  <!-- Flor -->
-  <div class="flower" id="flower">🌸</div>
   <!-- Lluvia de corazones -->
   <div class="hearts-container"></div>
 
@@ -167,7 +179,6 @@
       const card = document.querySelector('.card');
       card.classList.add('open');
       document.getElementById('love-letter').style.display = 'block';
-      document.getElementById('flower').style.display = 'block'; // Mostrar la flor
       typeWriter();
       playMusic();
 
